@@ -6,7 +6,7 @@
 
         <div class="row" style="height: 80px">
             <div class="col-md-4">
-                <input [(ngModel)] = "filtro"  class="form-control"  id="id_txt_filtro" name="filtro" placeholder="Ingrese el nombre del producto" type="text" maxlength="45" />
+                <input class="form-control"  id="id_txt_filtro" name="filtro" placeholder="Ingrese el nombre del producto" type="text" maxlength="45" />
             </div>
             <div class="col-md-2">
                 <button type="button" class="btn btn-primary" id="id_btn_filtrar" style="width: 150px" (click)="consulta()">Filtrar</button>
@@ -78,13 +78,13 @@
                 </div>
                 
                 <div class="modal-body">
-                    <form class="content" [formGroup]="forms" (ngSubmit)="registra()">
+                    <form class="content" (ngSubmit)="registra()">
                         <div class="submit-form">
                             
                                 <div  class="row">
                                     <div class="col-lg-4">
                                         <label for="id_reg_nombre">Nombre de producto</label>
-                                        <input formControlName="validaNombre" [(ngModel)]="producto.nombre" type="text" placeholder="Ingrese el nombre del producto" class="form-control" name="nombre" id="id_reg_nombre" />
+                                        <input formControlName="validaNombre" type="text" placeholder="Ingrese el nombre del producto" class="form-control" name="nombre" id="id_reg_nombre" />
                                         <div *ngIf="submitted && forms.controls['validaNombre'].errors" class="invalid">       
                                             <ul>
                                                 <li>El nombre del produco es obligatorio</li>                                                                 
@@ -99,7 +99,7 @@
                                     </div>
                                     <div class="col-lg-3">
                                         <label for="id_reg_serie">Serie</label>
-                                        <input formControlName="validaSerie" [(ngModel)]="producto.serie"  type="text" placeholder="Ingrese una SERIE" class="form-control" name="serie" id="id_reg_SERIE"  maxlength="45"/>
+                                        <input formControlName="validaSerie"  type="text" placeholder="Ingrese una SERIE" class="form-control" name="serie" id="id_reg_SERIE"  maxlength="45"/>
                                         <div *ngIf="submitted && forms.controls['validaSerie'].errors" class="invalid">       
                                             <ul>
                                                 <li>La serie es obligatorio</li>                                                                 
@@ -115,7 +115,7 @@
 
                                     <div class="col-lg-3">
                                         <label for="id_reg_durabilidad">Durabilidad</label>
-                                        <input formControlName="validaDurabilidad" [(ngModel)]="producto.durabilidad" type="text" placeholder="Ingrese durabilidad" class="form-control" name="durabilidad" id="id_reg_durabilidad" />
+                                        <input formControlName="validaDurabilidad" type="text" placeholder="Ingrese durabilidad" class="form-control" name="durabilidad" id="id_reg_durabilidad" />
                                         <div *ngIf="submitted && forms.controls['validaDurabilidad'].errors" class="invalid">       
                                             <ul>
                                                 <li>La durabilidad es obligatorio</li>                                                                 
@@ -125,7 +125,7 @@
 
                                     <div class="col-lg-4">
                                         <label for="id_reg_precio">Precio</label>
-                                        <input formControlName="validaPrecio" [(ngModel)]="producto.precio"  type="text" placeholder="Ingrese precio del producto" class="form-control" name="precio" id="id_reg_precio" />
+                                        <input formControlName="validaPrecio"  type="text" placeholder="Ingrese precio del producto" class="form-control" name="precio" id="id_reg_precio" />
                                         <div *ngIf="submitted && forms.controls['validaPrecio'].errors" class="invalid">       
                                             <ul>
                                                 <li>El precio es obligatorio</li>                                                                 
@@ -135,7 +135,7 @@
 
                                     <div class="col-lg-4">
                                         <label for="id_reg_stock">Stock</label>
-                                        <input formControlName="validaStock" [(ngModel)]="producto.stock" type="text" placeholder="Ingrese stock del producto" class="form-control" name="stock" id="id_reg_stock" />
+                                        <input formControlName="validaStock" type="text" placeholder="Ingrese stock del producto" class="form-control" name="stock" id="id_reg_stock" />
                                         <div *ngIf="submitted && forms.controls['validaStock'].errors" class="invalid">       
                                             <ul>
                                                 <li>El stock es obligatorio</li>                                                                 
@@ -151,7 +151,7 @@
                                     
                                     <div class="col-lg-4">
                                         <label for="id_reg_marca">Marca</label>
-                                        <select formControlName="validaMarca" [(ngModel)]="producto.marca!.idMarca"   id="id_reg_marca" name="marca" class="form-control">
+                                        <select formControlName="validaMarca" id="id_reg_marca" name="marca" class="form-control">
                                             <option value="-1"> [Seleccione] </option>
                                             <option *ngFor="let aux of marcas" value="{{ aux.idMarca }}"> 
                                                         {{ aux.nombre }}
@@ -166,7 +166,7 @@
 
                                     <div class="col-lg-4">
                                         <label  for="id_reg_pais">Pais</label>
-                                        <select formControlName="validaPais" [(ngModel)]="producto.pais!.idPais"   id="id_reg_pais" name="pais" class="form-control" >
+                                        <select formControlName="validaPais"  id="id_reg_pais" name="pais" class="form-control" >
                                             <option value="-1"> [Seleccione] </option>
                                              <option *ngFor="let aux of  paises" value="{{ aux.idPais }}"> 
                                                         {{ aux.nombre }}
@@ -209,13 +209,13 @@
                 </div>
                 <div class="modal-body">
 
-                    <form class="content" [formGroup]="forms" (ngSubmit)="actualiza()">
+                    <form class="content" (ngSubmit)="actualiza()">
                         <div class="submit-form">
 
                             <div  class="row">
                                 <div class="col-lg-4">
                                     <label for="id_reg_nombre">Nombre</label>
-                                        <input formControlName="validaNombre" [(ngModel)]="producto.nombre" type="text" placeholder="Ingrese el nombre" class="form-control" name="nombre" id="id_reg_nombre" />
+                                        <input formControlName="validaNombre"  type="text" placeholder="Ingrese el nombre" class="form-control" name="nombre" id="id_reg_nombre" />
                                         <div *ngIf="submitted && forms2.controls['validaNombre'].errors" class="invalid">       
                                             <ul>
                                                 <li>El nombre es obligatorio</li>                                                                 
@@ -230,7 +230,7 @@
                                     </div>
                                     <div class="col-lg-4">
                                         <label for="id_reg_serie">Serie</label>
-                                        <input formControlName="validaSerie" [(ngModel)]="producto.serie"  type="text" placeholder="Ingresa una serie" class="form-control" name="serie" id="id_reg_SERIE"  />
+                                        <input formControlName="validaSerie" type="text" placeholder="Ingresa una serie" class="form-control" name="serie" id="id_reg_SERIE"  />
                                         <div *ngIf="submitted && forms2.controls['validaSerie'].errors" class="invalid">       
                                             <ul>
                                                 <li>La serie es obligatorio</li>                                                                 
@@ -241,7 +241,7 @@
 
                                     <div class="col-lg-3">
                                         <label for="id_reg_durabilidad">Durabilidad</label>
-                                        <input formControlName="validaDurabilidad" [(ngModel)]="producto.durabilidad" type="text" placeholder="Ingrese la durabilidad" class="form-control" name="durabilidad" id="id_reg_durabilidad" />
+                                        <input formControlName="validaDurabilidad" type="text" placeholder="Ingrese la durabilidad" class="form-control" name="durabilidad" id="id_reg_durabilidad" />
                                         <div *ngIf="submitted && forms2.controls['validaDurabilidad'].errors" class="invalid">       
                                             <ul>
                                                 <li>La durabilidad es obligatorio</li>                                                                 
@@ -252,7 +252,7 @@
 
                                     <div class="col-lg-4">
                                         <label for="id_reg_precio">Precio</label>
-                                        <input formControlName="validaTelefono" [(ngModel)]="producto.precio"  type="text" placeholder="Ingrese precio del producto" class="form-control" name="precio" id="id_reg_precio" />
+                                        <input formControlName="validaTelefono" type="text" placeholder="Ingrese precio del producto" class="form-control" name="precio" id="id_reg_precio" />
                                         <div *ngIf="submitted && forms2.controls['validaPrecio'].errors" class="invalid">       
                                             <ul>
                                                 <li>El precio es obligatorio</li>                                                                 
@@ -262,7 +262,7 @@
 
                                     <div class="col-lg-4">
                                         <label for="id_reg_stock">Stock</label>
-                                        <input formControlName="validaStock" [(ngModel)]="producto.stock" type="text" placeholder="Ingrese stock del producto" class="form-control" name="stock" id="id_reg_stock" />
+                                        <input formControlName="validaStock" type="text" placeholder="Ingrese stock del producto" class="form-control" name="stock" id="id_reg_stock" />
                                         <div *ngIf="submitted && forms2.controls['validaStock'].errors" class="invalid">       
                                             <ul>
                                                 <li>El stock es obligatorio</li>                                                                 
@@ -275,7 +275,7 @@
                                     
                                     <div class="col-lg-4">
                                         <label for="id_reg_marca">Marca</label>
-                                        <select formControlName="validaMarca" [(ngModel)]="producto.marca!.idMarca"   id="id_reg_marca" name="marca" class="form-control">
+                                        <select formControlName="validaMarca"  id="id_reg_marca" name="marca" class="form-control">
                                             <option value="-1"> [Seleccione] </option>
                                             <option *ngFor="let aux of marcas" value="{{ aux.idMarca }}"> 
                                                         {{ aux.nombre }}
@@ -290,7 +290,7 @@
 
                                     <div class="col-lg-4">
                                         <label  for="id_reg_pais">Pais</label>
-                                        <select formControlName="validaPais" [(ngModel)]="producto.pais!.idPais"   id="id_reg_pais" name="pais" class="form-control" >
+                                        <select formControlName="validaPais"  id="id_reg_pais" name="pais" class="form-control" >
                                             <option value="-1"> [Seleccione] </option>
                                              <option *ngFor="let aux of  paises" value="{{ aux.idPais }}"> 
                                                         {{ aux.nombre }}
