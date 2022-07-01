@@ -5,9 +5,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { RegistraProductoComponent } from './components/registra-producto/registra-producto.component';
-import { ConsultaProductoComponent } from './components/consulta-producto/consulta-producto.component';
-import { CrudProductoComponent } from './components/crud-producto/crud-producto.component';
 import { RegistraPartesPc } from './components/registra-partespc/registra-partespc.component';
 import { RegistraProgramas } from './components/registra-programas/registra-programas.component';
 import { MantenimientoPartesPc } from './components/mantenimiento-partespc/mantenimiento-partespc.component';
@@ -16,9 +13,6 @@ import { MantenimientoProgramas } from './components/mantenimiento-programas/man
 @NgModule({
   declarations: [
     AppComponent,
-    RegistraProductoComponent,
-    ConsultaProductoComponent,
-    CrudProductoComponent,
 
     RegistraPartesPc,
     RegistraProgramas,

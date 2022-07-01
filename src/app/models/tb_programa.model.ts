@@ -1,9 +1,9 @@
 import { CategoriaPrograma } from "./tb_cateprogram.model";
 
 export class Programa {
-    idPrograma?: number;
+    id_programa?: number;
     idCatePrograma?: CategoriaPrograma;
-    nomPrograma?: String;
-    descPrograma?: String;
-    precioPrograma?: number;
+    nom_prog?: String;
+    desc_prog?: String;
+    precio?: number;
 }
