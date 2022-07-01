@@ -5,23 +5,18 @@
 
 
         <div class="row" style="height: 80px">
-            <div class="col-md-4">
-                <input class="form-control" id="id_txt_filtro" name="filtro"
-                    placeholder="Ingrese el nombre del programa" type="text" maxlength="45" />
-            </div>
 
             <div class="col-lg-4">
-                <select  id="categoria"  name="categoria"  class="form-control"     >
+                <select  id="idCatePrograma"  name="idCatePrograma"  class="form-control"  [(ngModel)]="idCatePrograma">
                     <option value="-1">[Seleccione la categoria]</option>
-                    <option *ngFor="let aux of marcas"    value="{{ aux.idMarca }}">
-                        {{ aux.nombre }}
-                    </option>    
+                    <option *ngFor="let aux of categoria" value="{{ aux.idCatePrograma }}">
+                        {{ aux.desPrograma }}
+                    </option>
                 </select>
             </div>
 
             <div class="col-md-2">
-                <button type="button" class="btn btn-primary" id="id_btn_filtrar" style="width: 150px">Filtrar</button>
-                <!-- (click)="consulta()" -->
+                <button type="button" class="btn btn-primary" id="id_btn_filtrar" style="width: 150px" (click)="consulta()">Filtrar</button>
             </div>
         </div>
 
@@ -33,28 +28,25 @@
                         <thead>
                             <tr>
                                 <th style="width: 3.5%">#</th>
-                                <th style="width: 11%">Categoria</th>
-                                <th style="width: 13.5%">Nombre</th>
-                                <th style="width: 5%">Descripcion</th>
+                                <th style="width: 4%">Categoria</th>
+                                <th style="width: 6%">Nombre</th>
+                                <th style="width: 13%">Descripcion</th>
                                 <th style="width: 4%">Precio</th>
-                                <th style="width: 7%"></th>
-                                <th style="width: 7%"></th>
+                                <th style="width: 3%"></th>
+                                <th style="width: 3%"></th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr *ngFor="let aux of productos">
-                                <td>{{ aux.idProducto }}</td>
-                                <td>{{ aux.nombre }}</td>
-                                <td>{{ aux.serie }}</td>
-                                <td>{{ aux.durabilidad}}</td>
+                            <tr *ngFor="let aux of programapc">
+                                <td>{{ aux.id_programa }}</td>
+                                <td>{{ aux.idCatePrograma!.desPrograma}}</td>
+                                <td>{{ aux.nom_prog }}</td>
+                                <td>{{ aux.desc_prog}}</td>
                                 <td>{{ aux.precio}}</td>
-                                <td>{{ aux.marca!.nombre }}</td>
                                 <td><button type="button" style="width: 90px" class="btn btn-primary btn-sm"
-                                        data-toggle="modal" data-target="#idModalActualizar">Editar</button></td>
-                                <!--(click)="busca(aux)" -->
+                                        data-toggle="modal" data-target="#idModalActualizar" (click)="busca(aux)">Editar</button></td>
                                 <td><button type="button" style="width: 90px"
-                                        class="btn btn-danger btn-sm">Eliminar</button></td>
-                                <!-- (click)="elimina(aux)" -->
+                                        class="btn btn-danger btn-sm" (click)="elimina(aux)">Eliminar</button></td>
                             </tr>
                         </tbody>
                     </table>
@@ -75,27 +67,26 @@
                 </div>
                 <div class="modal-body">
 
-                    <form class="content">
-                        <!--(ngSubmit)="actualiza()"-->
+                    <form class="content" (ngSubmit)="actualiza()">
                         <div class="submit-form">
 
                             <div class="row">
                                 <div class="col-lg-4">
                                     <label for="id_reg_nombre">Nombre</label>
                                     <input type="text" placeholder="Ingrese el nombre" class="form-control"
-                                        name="nombre" id="id_reg_nombre" />
+                                        name="nombre" id="id_reg_nombre" [(ngModel)]="programaspc.nom_prog"/>
 
                                 </div>
                                 <div class="col-lg-4">
                                     <label for="id_reg_descripcion">Descripcion</label>
                                     <input type="text" placeholder="Ingresa una descripcion" class="form-control"
-                                        name="descripcion" id="id_reg_descripcion" />
+                                        name="descripcion" id="id_reg_descripcion" [(ngModel)]="programaspc.desc_prog"/>
                                 </div>
 
                                 <div class="col-lg-4">
                                     <label for="id_reg_precio">Precio</label>
                                     <input placeholder="Ingrese precio del programa" class="form-control" name="precio"
-                                        id="id_reg_precio" />
+                                        id="id_reg_precio" [(ngModel)]="programaspc.precio"/>
                                 </div>
                             </div>
 
@@ -104,10 +95,10 @@
                                 <div class="col-lg-4">
                                     <label for="id_reg_categoria">Categoria</label>
                                     <select id="id_reg_categoria" name="cateogoria"
-                                        class="form-control">
+                                        class="form-control" [(ngModel)]="programaspc.idCatePrograma!.idCatePrograma">
                                         <option value="-1"> [Seleccione la categoria] </option>
-                                        <option *ngFor="let aux of marcas" value="{{ aux.idMarca }}">
-                                            {{ aux.nombre }}
+                                        <option *ngFor="let aux of categoria" value="{{ aux.idCatePrograma }}">
+                                            {{ aux.desPrograma }}
                                         </option>
                                     </select>
                                 </div>

@@ -1,6 +1,6 @@
 <div>
 
-    <form class="content" ><!--   </form>(ngSubmit)="registraProgramas()"    --> 
+    <form class="content" (ngSubmit)="registraProgramas()">
     <div class="submit-form" >
 
          <div class="row">
@@ -13,17 +13,17 @@
 
                 <div class="col-lg-3">
                     <label for="serie">Nombre</label>
-                    <input type="text" class="form-control" name="serie" id="serie" maxlength="45"  />
+                    <input type="text" class="form-control" name="serie" id="serie" maxlength="45"  [(ngModel)]="programaspc.nom_prog"/>
                 </div>
 
                 <div class="col-lg-3">
                     <label for="serie">Descripcion del Programa</label>
-                    <input type="text" class="form-control" name="serie" id="serie" maxlength="45"  />
+                    <input type="text" class="form-control" name="serie" id="serie" maxlength="45"  [(ngModel)]="programaspc.desc_prog"/>
                 </div>
 
                 <div class="col-lg-3">
                     <label for="durabilidad">Precio</label>
-                    <input type="text" class="form-control" name="durabilidad" id="durabilidad" maxlength="45"  />
+                    <input type="text" class="form-control" name="durabilidad" id="durabilidad" maxlength="45"  [(ngModel)]="programaspc.precio"/>
                 </div>
 
          </div>
@@ -32,11 +32,11 @@
 
             <div class="col-lg-4">
                 <label for="tipo">Categoria</label>
-                <select  id="marca" name="marca" class="form-control" >
+                <select  id="marca" name="marca" class="form-control" [(ngModel)]="programaspc.idCatePrograma!.idCatePrograma">
                     <option value=-1> [Seleccione la Categoria] </option>   
-                    <!--<option *ngFor="let aux of marcas" value="{{aux.idMarca}}">
-                        {{aux.nombre}}
-                    </option>   -->
+                    <option *ngFor="let aux of categoria" value="{{aux.idCatePrograma}}">
+                        {{aux.desPrograma}}
+                    </option> 
                 </select>
             </div>
 
