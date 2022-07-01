@@ -5,23 +5,18 @@
 
 
         <div class="row" style="height: 80px">
-            <div class="col-md-4">
-                <input class="form-control" id="id_txt_filtro" name="filtro"
-                    placeholder="Ingrese el nombre" type="text" maxlength="45" />
-            </div>
 
             <div class="col-lg-3">
-                <select  id="categoria"  name="categoria"  class="form-control"     >
+                <select  id="categoria"  name="categoria"  class="form-control" [(ngModel)]="id_tipopartes">
                     <option value="-1">[Seleccione el tipo]</option>
-                    <option *ngFor="let aux of marcas"    value="{{ aux.idMarca }}">
-                        {{ aux.nombre }}
+                    <option *ngFor="let aux of tipo" value="{{aux.id_tipopartes}}">
+                        {{ aux.desc_tipopartes }}
                     </option>    
                 </select>
             </div>
 
             <div class="col-md-2">
-                <button type="button" class="btn btn-primary" id="id_btn_filtrar" style="width: 150px">Filtrar</button>
-                <!-- (click)="consulta()" -->
+                <button type="button" class="btn btn-primary" id="id_btn_filtrar" style="width: 150px" (click)="consulta()">Filtrar</button>
             </div>
         </div>
 
@@ -41,19 +36,15 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr *ngFor="let aux of productos">
-                                <td>{{ aux.idProducto }}</td>
-                                <td>{{ aux.nombre }}</td>
-                                <td>{{ aux.serie }}</td>
-                                <td>{{ aux.durabilidad}}</td>
-                                <td>{{ aux.precio}}</td>
-                                <td>{{ aux.marca!.nombre }}</td>
+                            <tr *ngFor="let aux of partepc">
+                                <td>{{ aux.id_partes }}</td>
+                                <td>{{ aux.id_tipopartes!.desc_tipopartes }}</td>
+                                <td>{{ aux.nom_partes }}</td>
+                                <td>{{ aux.precio_partes}}</td>
                                 <td><button type="button" style="width: 90px" class="btn btn-primary btn-sm"
-                                        data-toggle="modal" data-target="#idModalActualizar">Editar</button></td>
-                                <!--(click)="busca(aux)" -->
+                                        data-toggle="modal" data-target="#idModalActualizar" (click)="busca(aux)">Editar</button></td>
                                 <td><button type="button" style="width: 90px"
-                                        class="btn btn-danger btn-sm">Eliminar</button></td>
-                                <!-- (click)="elimina(aux)" -->
+                                        class="btn btn-danger btn-sm" (click)="elimina(aux)">Eliminar</button></td>
                             </tr>
                         </tbody>
                     </table>
@@ -67,46 +58,39 @@
         <div class="modal-dialog" style="max-width: 80%;">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Actualización de Programas</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Actualización de Partes de PC</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
 
-                    <form class="content">
-                        <!--(ngSubmit)="actualiza()"-->
+                    <form class="content" (ngSubmit)="actualiza()">
                         <div class="submit-form">
 
                             <div class="row">
                                 <div class="col-lg-4">
-                                    <label for="id_reg_nombre">Nombre</label>
+                                    <label for="nom_partes">Nombre</label>
                                     <input type="text" placeholder="Ingrese el nombre" class="form-control"
-                                        name="nombre" id="id_reg_nombre" />
+                                        name="nom_partes" id="nom_partes" [(ngModel)]="partespc.nom_partes"/>
 
-                                </div>
-                                <div class="col-lg-4">
-                                    <label for="id_reg_descripcion">Descripcion</label>
-                                    <input type="text" placeholder="Ingresa una descripcion" class="form-control"
-                                        name="descripcion" id="id_reg_descripcion" />
                                 </div>
 
                                 <div class="col-lg-4">
-                                    <label for="id_reg_precio">Precio</label>
-                                    <input placeholder="Ingrese precio del programa" class="form-control" name="precio"
-                                        id="id_reg_precio" />
+                                    <label for="precio_partes">Precio</label>
+                                    <input type="number" placeholder="Ingrese precio" class="form-control" name="precio_partes"
+                                        id="precio_partes" [(ngModel)]="partespc.precio_partes"/>
                                 </div>
                             </div>
 
                             <div class="row" style="margin-top: 5%">
 
                                 <div class="col-lg-4">
-                                    <label for="id_reg_categoria">Categoria</label>
-                                    <select id="id_reg_categoria" name="cateogoria"
-                                        class="form-control">
+                                    <label for="id_tipopartes">Categoria</label>
+                                    <select id="id_tipopartes" name="id_tipopartes" class="form-control" [(ngModel)]="partespc.id_tipopartes!.id_tipopartes">
                                         <option value="-1"> [Seleccione la categoria] </option>
-                                        <option *ngFor="let aux of marcas" value="{{ aux.idMarca }}">
-                                            {{ aux.nombre }}
+                                        <option *ngFor="let aux of tipo" value="{{ aux.id_tipopartes }}">
+                                            {{ aux.desc_tipopartes }}
                                         </option>
                                     </select>
                                 </div>
@@ -122,7 +106,7 @@
                                 id="btn_act_cerrar">Cerrar</button>
                             <div class="form-group text-center">
                                 <div class="col-lg-12">
-                                    <button id="id_act_actualiza" class="btn btn-success form-control">Actualizar Programa</button>
+                                    <button id="id_act_actualiza" class="btn btn-success form-control">Actualizar Partes de PC</button>
                                 </div>
                             </div>
                         </div>

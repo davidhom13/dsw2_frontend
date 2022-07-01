@@ -1,50 +1,50 @@
 <div>
 
-    <form class="content" ><!--   </form>(ngSubmit)="registraPartesPc()"    --> 
-    <div class="submit-form" >
+    <form class="content" (ngSubmit)="registraPartesPc()">
+        <div class="submit-form">
 
-         <div class="row">
-            <div class="col-lg-12">
-                <h6>Registro de Partes de PC</h6>
-            </div>
-        </div>
-
-        <div class="row" style="margin-top: 3%">
-
-                <div class="col-lg-3">
-                    <label for="serie">Nombre</label>
-                    <input type="text" class="form-control" name="serie" id="serie" maxlength="45"  />
-                </div>
-
-                <div class="col-lg-3">
-                    <label for="durabilidad">Precio</label>
-                    <input type="text" class="form-control" name="durabilidad" id="durabilidad" maxlength="45"  />
-                </div>
-
-         </div>
-
-        <div class="row" style="margin-top: 3%">
-
-            <div class="col-lg-4">
-                <label for="tipo">Tipo</label>
-                <select  id="marca" name="marca" class="form-control" >
-                    <option value=-1> [Seleccione el Tipo] </option>   
-                    <option *ngFor="let aux of marcas" value="{{aux.idMarca}}">
-                        {{aux.nombre}}
-                    </option>   
-                </select>
-            </div>
-
-        </div>
-
-        <div class="row" style="margin-top: 3%"> 
+            <div class="row">
                 <div class="col-lg-12">
-                    <button class="btn btn-success"  >Registrar</button>
+                    <h6>Registro de Partes de PC</h6>
                 </div>
+            </div>
+
+            <div class="row" style="margin-top: 3%">
+
+                <div class="col-lg-3">
+                    <label for="nom_partes">Nombre</label>
+                    <input type="text" class="form-control" name="nom_partes" id="nom_partes" maxlength="45" [(ngModel)]="partespc.nom_partes"/>
+                </div>
+
+                <div class="col-lg-3">
+                    <label for="precio_partes">Precio</label>
+                    <input type="number" class="form-control" name="precio_partes" id="precio_partes" maxlength="45" [(ngModel)]="partespc.precio_partes"/>
+                </div>
+
+            </div>
+
+            <div class="row" style="margin-top: 3%">
+
+                <div class="col-lg-4">
+                    <label for="id_tipopartes">Tipo</label>
+                    <select id="id_tipopartes" name="id_tipopartes" class="form-control" [(ngModel)]="partespc.id_tipopartes!.id_tipopartes">
+                        <option value="-1"> [Seleccione el Tipo] </option>
+                        <option *ngFor="let aux of tipo" value="{{aux.id_tipopartes}}">
+                            {{aux.desc_tipopartes}}
+                        </option>
+                    </select>
+                </div>
+
+            </div>
+
+            <div class="row" style="margin-top: 3%">
+                <div class="col-lg-12">
+                    <button class="btn btn-success">Registrar</button>
+                </div>
+            </div>
+
+
         </div>
 
-
-      </div>
-
-     </form> 
+    </form>
 </div>

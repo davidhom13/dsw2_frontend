@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Marca } from 'src/app/models/marca.model';
 import { Pais } from 'src/app/models/pais.model';
 import { Producto } from 'src/app/models/producto.model';
+import { TipoPartes } from 'src/app/models/tb_tipopartes.model';
 import { MarcaService } from 'src/app/services/marca.service';
 import { PaisService } from 'src/app/services/pais.service';
 import { ProductoService } from 'src/app/services/producto.service';
@@ -15,6 +16,7 @@ export class RegistraProductoComponent implements OnInit {
 
   marcas: Marca [] = [];
   pais: Pais [] = [];
+  tipo: TipoPartes [] = [];
 
   producto: Producto = {
     marca:{
