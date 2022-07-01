@@ -28,7 +28,7 @@ const baseUrlPartesPc = AppSettings.API_ENDPOINT+ '/crudPartesPC';
     }
 
     actualizaPartes(aux: PartesPc): Observable<any>{
-        return this.http.put(baseUrlPartesPc + "/actualizaPartesPC", aux);
+        return this.http.post(baseUrlPartesPc + "/actualizaPartesPC", aux);
     }
 
     eliminaPartes(id_partes: any): Observable<any>{
